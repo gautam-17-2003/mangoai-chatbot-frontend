@@ -6,7 +6,11 @@ const API_BASE = "http://localhost:8000"; // Update if your backend runs on a di
 export async function fetchChats(userId: string) {
   try {
     const res = await axios.get(`${API_BASE}/get-user-chats/${userId}`);
-    return res.data.chats;
+    return res.data.chats.map((chat: any) => ({
+      _id: chat._id,
+      title: chat.title || "Untitled Chat",
+    }));
+
   } catch (error) {
     console.error("Error fetching chats:", error);
     return [];

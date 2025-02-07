@@ -3,9 +3,10 @@ import { fetchChatHistory, sendMessage } from "../services/api";
 
 interface ChatWindowProps {
   currentThreadId: string | null;
+  setChatUpdated: React.Dispatch<React.SetStateAction<boolean>>; 
 }
 
-export default function ChatWindow({ currentThreadId }: ChatWindowProps) {
+export default function ChatWindow({ currentThreadId , setChatUpdated }: ChatWindowProps) {
   const [messages, setMessages] = useState<{ role: string; content: string }[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -23,6 +24,7 @@ export default function ChatWindow({ currentThreadId }: ChatWindowProps) {
     setMessages(updatedMessages);
     setInput("");
     setLoading(false);
+    setChatUpdated((prev: boolean) => !prev);
   };
 
   return (

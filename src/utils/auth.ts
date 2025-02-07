@@ -16,3 +16,12 @@ const useAuth = () => {
 };
 
 export default useAuth; 
+
+// import { getUser } from "../services/api";
+
+// const useAuth = () => {
+//   const user = getUser();
+//   return { user, isAuthenticated: !!user };
+// };
+
+// export default useAuth;
